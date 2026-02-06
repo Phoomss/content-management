@@ -1,4 +1,3 @@
-
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Post } from '../../posts/entities/post.entity';
 import { Comment } from '../../comments/entities/comment.entity';
@@ -12,7 +11,13 @@ export class User {
   email: string;
 
   @Column()
+  password: string;
+
+  @Column()
   name: string;
+
+  @Column({ default: 'user' })
+  role: string;
 
   @OneToMany(() => Post, (post) => post.author)
   posts: Post[];
